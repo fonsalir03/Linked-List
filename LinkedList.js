@@ -89,4 +89,19 @@ class LinkedList {
         return poppedNode.value
 
     }
+
+    contains(searchValue){
+
+        let currentNode = this.#head
+        for (let i = 0; i<this.size();i++){
+            if (currentNode.value == searchValue){
+                return true
+            }
+            currentNode = currentNode.nextNode
+        }
+        return false
+    }
 }
+
+
+
