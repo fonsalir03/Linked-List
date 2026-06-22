@@ -48,5 +48,17 @@ class LinkedList {
         }
         return size
     }
+    head(){
+        if (this.#head == null){
+            return undefined
+        }
+        return this.#head.value
+    }
+    tail(){
+        if (this.#head == null){
+            return undefined
+        }
+        return this.#tail.value
+    }
 
 }
