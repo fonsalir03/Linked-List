@@ -75,4 +75,18 @@ class LinkedList {
         return currentNode.value
     }
 
+    pop(){
+        if (this.#head == null){
+            return undefined
+        }
+
+        const poppedNode = this.#head
+        if (poppedNode.nextNode){
+            this.#head = poppedNode.nextNode
+        }else{
+            this.#head = null
+        }
+        return poppedNode.value
+
+    }
 }
