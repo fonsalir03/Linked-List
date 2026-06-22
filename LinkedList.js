@@ -35,5 +35,18 @@ class LinkedList {
         newNode.nextNode = this.#head
         this.#head = newNode
     }
+            size(){
+        if (this.#head == null){
+            return 0
+        }
+        
+        let tmp = this.#head
+        let size = 1
+        while (tmp.nextNode){
+            size++
+            tmp = tmp.nextNode
+        }
+        return size
+    }
 
 }
