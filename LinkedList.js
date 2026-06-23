@@ -101,7 +101,18 @@ class LinkedList {
         }
         return false
     }
+
+    findIndex(searchValue){
+        //similar to the contain function
+        //iterate through the linked list, if the value is found return i
+
+        let currentNode = this.#head
+        for (let i = 0; i<this.size(); i++){
+            if (currentNode.value == searchValue){
+                return i
+            }
+            currentNode = currentNode.nextNode
+        }
+        return -1
+    }
 }
-
-
-
