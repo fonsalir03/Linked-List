@@ -1,6 +1,6 @@
 class Node {
-    constructor(){
-        this.value = null
+    constructor(value=null){
+        this.value = value
         this.nextNode = null
     }
 }
@@ -11,6 +11,12 @@ class LinkedList {
     constructor(){
         this.#head = null
         this.#tail = null
+    }
+
+    checkIndex(index){
+        if (index > this.size() || index < 0){
+            throw new RangeError("Out of bounds")
+        }
     }
 
     append(value){
@@ -118,7 +124,6 @@ class LinkedList {
 
     toString(){
 
-
         let currentNode = this.#head
         let string = ""
         while (currentNode){
@@ -126,5 +131,34 @@ class LinkedList {
             currentNode = currentNode.nextNode
         }
         return string + "null"
+    }
+
+    insertAt(index, ...values){
+        this.checkIndex(index)
+
+        const newNodes = values.map((value)=> new Node(value))
+
+        if (newNodes.length > 1){
+            for (let i =0;i<newNodes.length -1;i++){
+                newNodes[i].nextNode = newNodes[i+1]
+            }
+        }
+
+        let selectedNode = this.#head
+        let previousNode = this.#head
+        for (let i=0; i<index; i++){
+            previousNode = selectedNode
+            selectedNode = selectedNode.nextNode
+        }
+
+        if (previousNode != selectedNode){
+            previousNode.nextNode = newNodes[0]
+        }
+        
+        newNodes[newNodes.length -1].nextNode = selectedNode
+
+        if (index == 0){
+            this.#head = newNodes[0]
+        }
     }
 }
