@@ -161,4 +161,24 @@ class LinkedList {
             this.#head = newNodes[0]
         }
     }
+
+    removeAt(index){
+        this.checkIndex(index)
+        if (index == this.size()){
+            throw new RangeError("Out of bounds")
+        }else if (index == 0){
+            this.#head = this.#head.nextNode
+            return
+        }
+
+        let previousNode = this.#head
+        let currentNode = this.#head
+
+        for (let i = 0;i< index;i++){
+            previousNode = currentNode
+            currentNode = currentNode.nextNode
+        }
+        previousNode.nextNode = currentNode.nextNode
+
+    }
 }
